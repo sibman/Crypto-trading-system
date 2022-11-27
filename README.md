@@ -7,7 +7,7 @@
 
 ![Work Flow](AWS_architecture.png)
 
-## Infrastructure of the systems
+## Infrastructure of the system
 Phrase 1:
 * 1 Lambda function (TopMarketCapUpdate) to scrape list of top market cap coins from binance website  and store it in json format (top_marketcap)
 * 1 s3 bucket (TopMarketCapCrypto) to store json file of list topcoin 
