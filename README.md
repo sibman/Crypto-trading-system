@@ -1,4 +1,4 @@
-# Crypto-trading-system:
+# Crypto Trading System:
 * Terraform as an infrastructure as code tool to deploy AWS resources for the system
 * Event-driven architecture with Lambda function, Step function, and  EventBridge
 * Automatically update OHLC price data of cryptocurrencies to data lake (S3)
