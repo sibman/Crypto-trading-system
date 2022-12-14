@@ -8,33 +8,33 @@
 ![Work Flow](AWS_architecture.png)
 
 ## Infrastructure of the system
-Phrase 1:
+Phase 1:
 * 1 Lambda function (TopMarketCapUpdate) to scrape list of top market cap coins from binance website  and store it in json format (top_marketcap)
 * 1 s3 bucket (TopMarketCapCrypto) to store json file of list topcoin 
 * 1 IAM roles (TopMarketCapUpdateRole) to allow all tasks above 
 
-Phrase 2:
+Phase 2:
 * 1 Lambda function (HistoricalDataUpdate) to perform ingestion new historical data
 * 1 S3 bucket to store raw historical data in  parquet
 * 1 Glue catalog table to store metadata of raw data
 * 1 IAM roles (HistoricalDataUpdateRole) to allow all tasks in this phrase
 
-Phrase 3:
+Phase 3:
 * 1 Glue job (GlueETLJob) to extract data from s3, transform and load to Timestream database
 * 1 Timestream database (demo-ts-db),1 timestream table (demo-ts-tb) to store processed data 
 * 1 IAM role (HistoricalDataETLRole) to allow all tasks in this phrase
 
-Phrase 4:
+Phase 4:
 * 1 Dynamodb table to store new analysis data
 * 2 Lambda function to  perform analysis on data from datawarehouse (Timestreamdb) and write results to Dynamodb
 * 1 IAM role for all these task in this phrase
 
-Phrase 5:
+Phase 5:
 * 1 EC2 instance where hosts trading bot
 * 1 IAM has access to Dynamodb, s3
 * 1 trading bot to run within EC2 instance
 
-Phrase 6:
+Phase 6:
 * 1 Eventbridge to schedule State Machine
 * 1 State Machine within Step Function
 
